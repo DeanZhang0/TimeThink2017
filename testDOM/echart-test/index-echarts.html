@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>echarts-圆环图</title>
+    <script type="text/javascript" src="../jquery-3.1.1.js" ></script>
+    <script type="text/javascript" src="echarts.js" ></script>
+    <script type="text/javascript" src="datacenter-echarts.js" ></script>
+    <style>
+        #stu_right{
+            width: 1024px;
+            height: 600px;
+            margin: 0 auto;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+
+//            var Example={}; //传入的数据格式
+//            Example.totaRightRatio=[12,32,34,65];
+//            Example.previewRightRatio=[13,23,45,55];
+//            Example.inclassRightRatio=[15,25,43,45];
+//            Example.homeworkRightRatio=[8,14,65,57];
+//            Example.statisticDate=['10-31','11-02','11-02','11-02'];
+//            DateCenterEcharts.PolylineStuCorrectRate(Example);
+
+//            var Example={}; //传入的数据格式
+//            Example.totalResult=[67,76,78,76];
+//            Example.AverageResult=[78,76,65,87];
+//            Example.statisticDate=['10-31','11-02','11-02','11-02'];
+//            DateCenterEcharts.PolylineStuAverageRank(Example);
+
+//            var data1=[23,34,32]; //传入的数据格式
+//            var data2=[22,30,32]; //传入的数据格式
+//
+//            DateCenterEcharts.ColumnStuTotalResult(data1,data2);
+
+//            var Example={}; //传入的数据格式
+//            Example.first={className:"一班",data:[12,23,34,21]};
+//            Example.second={className:"二班",data:[15,22,31,20]};
+//            Example.statisticDate=['10-31','11-02','11-02','11-02'];
+//            DateCenterEcharts.PolylineCompareCompleteRate(Example);
+
+            var Example={};
+            Example.previewRightRate=58;
+            Example.inclassRightRate=68;
+            Example.homeworkRightRate=34;
+
+            DateCenterEcharts.ColumnRightRate(Example);
+        });
+    </script>
+</head>
+<body id="bodyDiv">
+    <div id="stu_right">
+
+    </div>
+</body>
+</html>  

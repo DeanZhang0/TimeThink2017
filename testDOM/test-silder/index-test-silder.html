@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <style>
+        .test1{
+            margin: 10px 0;
+            height: 200px;
+            width: 100%;
+            background-color:#e6e6e6 ;
+            /*margin: 0 auto;*/
+            position: relative;
+        }
+        .test-btn{
+            width: 100px;
+            height: 60px;
+            float: right;
+            background-color: red;
+            margin-top: 70px;
+        }
+        .dn{
+            display: none;
+        }
+    </style>
+</head>
+<body style="overflow: hidden;">
+<div class="test1">
+    <div class="test-btn dn"></div>
+</div>
+<div class="test1">
+    <div class="test-btn dn"></div>
+</div>
+<div class="test1">
+    <div class="test-btn dn"></div>
+</div>
+<div class="test1">
+    <div class="test-btn dn"></div>
+</div>
+<div class="test1">
+    <div class="test-btn dn"></div>
+</div>
+<script>
+
+$(function () {
+    $(".test1").on("swipeleft",function(){
+        $(this).find(".test-btn").removeClass("dn");
+    });
+    $(".test1").on("swiperight",function(){
+        $(this).find(".test-btn").addClass("dn");
+    });
+});
+</script>
+</body>
+</html>

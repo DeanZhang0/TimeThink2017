@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>弹出面板添加移除学生</title>
+    <link rel="stylesheet" href="my-space-create-pop.css">
+    <script src="../jquery-3.1.1.js"></script>
+    <script src="add-remove-stu.js"></script>
+</head>
+
+<body>
+    <div class="create-pop-show">
+        <div class="pop-mask"></div>
+        <div class="create-pop-main" sid="create-pop-main">
+            <div class="create-pop-m-top">
+                <span class="topNav-name">选择学生</span>
+                <span class="topNav-close r">X</span>
+            </div>
+            <div class="create-pop-m-con">
+                <div class="mian-con-left l" sid="mian-con-left">
+                    <p class="unselect-num">未选学生：<span class="unselect-num-stu" sid="unselect-num-stu">18</span>人</p>
+                    <div class="search-stu">
+                        <input type="text" sid="select-stu-name" placeholder="请输入学生姓名">
+                        <button class="search-stu-button" sid="search-stu-button">搜索</button>
+                    </div>
+                    <div class="unselect-stu-detail-info" multiple="multiple" sid="unselect-stu-detail-info">
+                    </div>
+                </div>
+                <div class="mian-con-right r" sid="mian-con-right">
+                    <p class="select-num">已选学生：<span class="select-num-stu" sid="select-num-stu">18</span>人</p>
+                    <div class="select-stu-detail-info" multiple="multiple" sid="select-stu-detail-info">
+                    </div>
+                </div>
+            </div>
+            <div class="create-pop-m-bottom">
+                <button class="can-btn r">取消</button>
+                <button class="sv-btn r">确定</button>
+            </div>
+        </div>
+    </div>
+    <script>
+    $(function() {
+        new ChooseStu($(".create-pop-show"))
+    })
+    </script>
+</body>
+
+</html>
