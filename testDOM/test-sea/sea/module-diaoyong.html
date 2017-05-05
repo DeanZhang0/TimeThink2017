@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/sea.js" ></script>
+		<link rel="icon" href="#"/>
+	</head>
+	<body>
+		<script>
+		//模块调用情况三
+			//在页面中调用模块使用seajs.use()；有两个参数：第一个参数：模块的地址；第二个参数：回调函数
+			seajs.use("./js/seaJS1.js",function(ex){//sea的默认根目录就是sea.js这个文件，在这里使用相对路径
+				//回调函数的第一个参数可以用任意变量接收
+				//ex:代表当前模块（seaJS1.js）的exports
+					ex.show(); //1
+					function show(){
+						alert(2);
+					}
+					show();//2
+			}); 
+			
+			seajs.use("./js/seaJS2.js",function(ex){
+					ex.show(); //3
+					function show(){
+						alert(4);
+					}
+					show();//4
+			}); 
+		</script>
+	</body>
+</html>

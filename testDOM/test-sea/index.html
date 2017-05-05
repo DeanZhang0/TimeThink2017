@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>测试sea.js</title>
+    <!-- 引入menkr cdn 提供的seajs源 和 配置文件 -->
+    <!--<script src="sea.js"></script>-->
+    <script src="test-moudle.js"></script>
+</head>
+<body>
+<script>
+    thin.define("constant.PI", [], function () {
+        return 3.1415926;
+    });
+    thin.define("shape.Circle", ["constant.PI"], function (pi) {
+        var Circle = function (r) {
+            this.r = r;
+        };
+        Circle.prototype.area = function () {
+            return pi * this.r * this.r;
+        }
+        return Circle;
+    });
+    thin.define("shape.Rectangle", [], function () {
+        var Rectangle = function (l, w) {
+            this.l = l;
+            this.w = w;
+        }
+        Rectangle.prototype.area = function () {
+            return this.l * this.w;
+        }
+        return Rectangle;
+    });
+    thin.define("ShapeTypes", ["shape.Circle", "shape.Rectangle"], function (Circle, Rectangle) {
+        return {
+            CIRCLE: Circle,
+            RECTANGLE: Rectangle
+        };
+    });
+    thin.define("ShapeFactory", ["ShapeTypes"], function (ShapeTypes) {
+        return {
+            getShape: function (type) {
+                var shape;
+
+                switch (type) {
+                    case "CIRCLE":
+                    {
+                        shape = new ShapeTypes[type](arguments[1]);
+                        break;
+                    }
+                    case "RECTANGLE":
+                    {
+                        shape = new ShapeTypes[type](arguments[1], arguments[2]);
+                        break;
+                    }
+                }
+                return shape;
+            }
+        }
+    })
+
+    var ShapeFactory = thin.use("ShapeFactory");
+    alert(ShapeFactory.getShape("CIRCLE", 5).area());
+    alert(ShapeFactory.getShape("RECTANGLE", 3, 4).area());
+</script>
+</body>
+</html>
