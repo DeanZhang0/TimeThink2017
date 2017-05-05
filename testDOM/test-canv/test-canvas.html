@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <title>Canvas Test</title>
     <style type="text/css">
+        body{
+            background-color: #000000;
+        }
+        #c1{
+            background-color: #ffffff;
+        }
         .mycanvas{
             width: 400px;
             height: 300px;
@@ -15,6 +21,9 @@
     <script src="test-canvas.js"></script>
 </head>
 <body>
+    <canvas id="c1" width="400" height="400">
+        该浏览器不支持CANVAS
+    </canvas>
     <div class="mycanvas"><canvas id="mycanvas"></canvas></div>
     <button class="draw">绘制</button>
 </body>
