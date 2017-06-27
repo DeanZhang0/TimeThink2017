@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8"/>
+    <title>滚动条到底部时自己加载新的内容</title>
+    <script type='text/javascript' src='../jquery-3.1.1.js'></script>
+    <script type='text/javascript' src='template.js'></script>
+</head>
+<style>
+    ul {
+        border: 1px solid #CCCCCC;
+        padding: 10px 10px;
+    }
+
+    ul li {
+        list-style: none;
+        border-bottom: 1px solid #CCCCCC;
+        padding: 10px 0;
+    }
+
+    .showInfo {
+        position: fixed;
+        top: 40%;
+        left: 44%;
+        color: #ff0000;
+        font-weight: bolder;
+        font-size: 30px;
+        background-color: rgba(204, 204, 204, 0.8);
+        padding: 10px;
+        border-radius: 30px;
+    }
+
+    .dn {
+        display: none;
+    }
+</style>
+<body>
+<ul class="TestArea">
+
+</ul>
+<div class="showInfo dn">正在加载……</div>
+</body>
+</html>

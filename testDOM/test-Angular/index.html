@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Angular JS Test</title>
+    <script src="angular.min.js"></script>
+</head>
+<body>
+    <!--<div ng-app="">-->
+        <!--<p>Name:<input type="text" ng-model="name"></p>-->
+        <!--<h1>You input {{name}}</h1>-->
+    <!--</div>-->
+    <!--<div data-ng-app="" data-ng-init="firstName='John'">-->
+        <!--<p>Your Name is: <span data-ng-bind="firstName"></span></p>-->
+    <!--</div>-->
+<!--<div ng-app="">-->
+    <!--<p>My First Express: {{5+5}}</p>-->
+<!--</div>-->
+<!--<div ng-app="myApp" ng-controller="myCtrl">-->
+    <!--LastName:<input type="text" ng-model="lastname"><br/>-->
+    <!--FirstName:<input type="text" ng-model="firstname"><br/>-->
+    <!--Name: {{firstname + lastname}}-->
+<!--</div>-->
+<!--<script>-->
+    <!--var app=angular.module("myApp",[]);-->
+    <!--app.controller("myCtrl", function ($scope) {-->
+        <!--$scope.firstname="john";-->
+        <!--$scope.lastname="Deo";-->
+    <!--});-->
+<!--</script>-->
+
+<!--<div ng-app="" ng-init="a1=1;b1=2">-->
+    <!--num:<input ng-model="a1"><br />-->
+    <!--price:<input ng-model="b1"><br/>-->
+    <!--<p><b>Total:</b>{{a1 * b1}}</p>-->
+<!--</div>-->
+<!--<div ng-app="" ng-init=" names=[-->
+<!--{name:'Jani',country:'Norway'},-->
+<!--{name:'Hege',country:'Sweden'},-->
+<!--{name:'Kai',country:'Denmark'}]">-->
+    <!--<ul>-->
+        <!--<li ng-repeat="x in names">{{ x.name + ', ' + x.country}}</li>-->
+    <!--</ul>-->
+<!--</div>-->
+<!--<form ng-app="" name="myForm">-->
+    <!--Email:<input type="email" name="myAddress" ng-model="text">-->
+    <!--<span ng-show="myForm.myAddress.$error.email"></span>-->
+<!--</form>-->
+    <!--<form ng-app="" name="myForm" ng-init="myText = 'test@runoob.com'">-->
+        <!--Email:-->
+        <!--<input type="email" name="myAddress" ng-model="myText" required></p>-->
+        <!--<h1>状态</h1>-->
+        <!--{{myForm.myAddress.$valid}}-->
+        <!--{{myForm.myAddress.$dirty}}-->
+        <!--{{myForm.myAddress.$touched}}-->
+    <!--</form>-->
+<div ng-app="myApp" ng-controller="myCtrl">
+    <input ng-model="name">
+    <h1>{{greeting}}</h1>
+    <button ng-click="sayHello()">Click</button>
+</div>
+<script>
+    var app=angular.module("myApp",[]);
+    app.controller("myCtrl", ['$scope',function ($scope) {
+        $scope.sayHello= function () {
+            var getName=$scope.name;
+            console.log(getName);
+            if(!getName){
+                $scope.greeting="Please input your name!";
+            }else{
+                $scope.greeting="Hello "+$scope.name+"!";
+            }
+        }
+    }])
+</script>
+</body>
+</html>

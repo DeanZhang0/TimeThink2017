@@ -1356,3 +1356,191 @@ DateCenterEcharts.PolylineStuAverageRank = function (data) {
     };
     echart.setOption(option);
 };
+
+
+//E-charts详情
+var AppendDevice = function () {
+
+};
+//中国地图
+AppendDevice.CircleChart = function (viewID, data) {
+    var ShowId = viewID;
+    var EchartData = data;
+    var setMax = parseInt(EchartData[0].value * 0.7);
+    console.log(EchartData);
+    console.log(setMax);
+
+    //E-charts设置
+    var pieChart = document.getElementById(ShowId) || document.body;
+    var echart = echarts.init(pieChart);
+
+    var option = {
+        title: {
+            show: false,
+            text: '',
+            subtext: '',
+            x: 'center'
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: "{b} : {c} 人"
+        },
+        legend: {
+            show: false,
+            orient: 'vertical',
+            x: 'left',
+            data: ['观众人数'],
+            selectedMode: false
+        },
+        dataRange: {
+            min: 0,
+            max: 10,
+            orient: 'horizontal',
+            x: 'left',
+            y: 'bottom',
+            text: ['高', '低'],           // 文本，默认为数值文本
+            calculable: false,
+            selectedMode: false
+        },
+        series: [
+            {
+                name: '观众人数',
+                type: 'map',
+                mapType: 'china',
+                roam: false,
+                itemStyle: {
+                    normal: {label: {show: true}},
+                    emphasis: {label: {show: true}}
+                },
+                data: EchartData
+            }
+        ]
+    };
+    echart.setOption(option);
+}
+//环形图
+AppendDevice.Annulus = function (viewID, PCNum, MobileNum) {
+    //根据获得数据判断，如果为0或未定义，这设置值为0
+    var pc = PCNum ? PCNum : 0;
+    var mobile = MobileNum ? MobileNum : 0;
+    //设置数据
+    var data = [
+        {name: 'PC观看人数', value: pc},
+        {name: '移动端观看人数', value: mobile}
+    ];
+    //E-charts设置
+    var pieChart = document.getElementById(viewID) || document.body;
+    var echart = echarts.init(pieChart);
+    var option = {
+        //显示的title
+        title: {
+            show: false,
+            text: '',
+            x: "center",
+            y: "center",
+            textStyle: {
+                fontSize: '18',
+                //fontWeight: 'bold'
+            }
+        },
+        //鼠标经过显示的文字详情
+        tooltip: {
+            trigger: 'item',
+            formatter: "{b} : {c} <br>占比 : {d}%"
+        },
+        //设置颜色，从第一个开始获取
+        color: ['#9ACE60', '#419BF9', '#F08585'],
+        legend: {
+            show: false,
+            orient: 'vertical',
+            x: "left",
+            y: "top",
+            data: []
+        },
+        series: [
+            {
+                name: '完成人数',
+                type: 'pie',
+                //设置圆心的位置和半径
+                radius: ['50%', '70%'],
+                center: ['50%', '50%'],
+                data: data,
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                },
+                avoidLabelOverlap: false,
+                //图形标签和文字
+                label: {
+                    normal: {
+                        show: true
+                    },
+                    emphasis: {
+                        show: true
+                    }
+                },
+                hoverAnimation: false
+            }
+        ]
+    };
+    echart.setOption(option);
+};
+
+//折线面积图
+AppendDevice.LineMap = function (viewID, Num, Time) {
+    //设置数据
+    var data = [
+        {name: 'PC观看人数', value: 100},
+        {name: '移动端观看人数', value: 50}
+    ];
+    //E-charts设置
+    var pieChart = document.getElementById(viewID) || document.body;
+    var echart = echarts.init(pieChart);
+    var option = {
+        title: {
+            show: false,
+            text: '观看人数',
+            subtext: ''
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        color: ['#419BF9', '#FFCB3D'],
+        legend: {
+            data: ['观看人数'],
+            selectedMode: false,
+            x: "70px",
+            y: "top",
+        },
+        calculable: true,
+        xAxis: [
+            {
+                type: 'category',
+                boundaryGap: false,
+                data: Time
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value',
+                //添加 单位
+                axisLabel: {
+                    formatter: '{value} 人'
+                },
+            }
+        ],
+        series: [
+            {
+                name: '观看人数',
+                type: 'line',
+                smooth: true,
+                itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                data: Num
+            }
+        ]
+    };
+    echart.setOption(option);
+};
