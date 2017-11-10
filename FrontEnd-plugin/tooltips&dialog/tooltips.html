@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>提示框</title>
+    <link rel="stylesheet" href="tooltips_v1.0.css"/>
+    <script src="../jquery-3.1.1.js"></script>
+    <script src="tooltips_jq_v1.0.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="test" style="width: 1000px;height: 300px; position: relative; margin: 0 auto; background-color: aqua">asdadadadadasd</div>
+<button>click</button>
+<script>
+    $(function () {
+        $("button").click(function () {
+            var myLoading = new GlobalLoading(".test");
+            myLoading.show();
+            setTimeout(function () {
+                myLoading.remove();
+            },2000)
+        });
+    })
+</script>
+</body>
+</html>

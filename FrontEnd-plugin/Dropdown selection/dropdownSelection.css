@@ -1,0 +1,22 @@
+.dropdownSelection p,.dropdownSelection ul{
+    margin: 0;
+    padding: 0;
+    border: 1px solid #CCCCCC;
+    text-align: center;
+    padding: 5px 0;
+}
+.dropdownSelection p{
+    cursor: pointer;
+}
+.dropdownSelection ul{
+    border-top: none;
+    display: none;
+}
+.dropdownSelection ul li{
+    list-style: none;
+    padding: 5px 0;
+    cursor: pointer;
+}
+.dropdownSelection ul li:hover{
+    background-color: #fafafa;
+}

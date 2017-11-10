@@ -1,0 +1,71 @@
+.kv-silder {
+    position: relative;
+    width: 670px;
+    height: 400px;
+    margin: 50px auto;
+}
+
+.kv-silder .kv-imgs {
+    list-style: none;
+}
+
+.kv-silder .kv-imgs li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.kv-silder .kv-num {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    font-size: 0;
+    width: 90%;
+    text-align: center;
+}
+
+.kv-silder .kv-num li {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    font-size: 16px;
+    background-color: #666;
+    color: #fff;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 50%;
+    margin: 0 3px;
+    cursor: pointer;
+}
+
+.kv-silder .kv-num li.active {
+    background-color: #a00;
+}
+
+.kv-silder .kv-btn {
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 60px;
+    margin-top: -30px;
+    background: rgba(0, 0, 0, .5);
+    color: #fff;
+    text-align: center;
+    line-height: 60px;
+    font-size: 40px;
+    display: none;
+}
+
+.kv-silder:hover .kv-btn {
+    display: block;
+    cursor: pointer;
+}
+
+.kv-silder .kv-left {
+    left: 0;
+}
+
+.kv-silder .kv-right {
+    right: 0;
+}

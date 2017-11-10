@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Dropdown Selection</title>
+    <link rel="stylesheet" type="text/css" href="dropdownSelection.css"/>
+    <script src="../jquery-3.1.1.js"></script>
+    <script src="jquery.dropdownselection.js"></script>
+    <!--<script src="DropdownSelection.js"></script>-->
+</head>
+<body style="width: 500px; margin: 100px auto 0;">
+<div id="testdropdown" class="testdropdown"></div>
+<script>
+    $(function () {
+        var data = {
+            "code": 10000,
+            "msg": "SUCCESS",
+            "data": [
+                {
+                    "id": 590,
+                    "className": "一年级二班",
+                    "levelName": "1",
+                    "studentCount": null,
+                    "grade": 2,
+                    "teacherName": null,
+                    "levelId": 1
+                },
+                {
+                    "id": 591,
+                    "className": "一年级一班",
+                    "levelName": "小学",
+                    "studentCount": null,
+                    "grade": 2,
+                    "teacherName": null,
+                    "levelId": 1
+                },
+                {
+                    "id": 595,
+                    "className": "ä¸å¹´çº§äºç­",
+                    "levelName": null,
+                    "studentCount": null,
+                    "grade": 1,
+                    "teacherName": null,
+                    "levelId": null
+                },
+                {
+                    "id": 596,
+                    "className": "三年级一班",
+                    "levelName": null,
+                    "studentCount": null,
+                    "grade": 3,
+                    "teacherName": null,
+                    "levelId": null
+                },
+                {
+                    "id": 597,
+                    "className": "三年级一班",
+                    "levelName": null,
+                    "studentCount": null,
+                    "grade": 3,
+                    "teacherName": null,
+                    "levelId": null
+                },
+                {
+                    "id": 598,
+                    "className": "二年级一班",
+                    "levelName": null,
+                    "studentCount": null,
+                    "grade": 2,
+                    "teacherName": null,
+                    "levelId": null
+                },
+                {
+                    "id": 599,
+                    "className": "一年级三班",
+                    "levelName": null,
+                    "studentCount": null,
+                    "grade": 1,
+                    "teacherName": null,
+                    "levelId": null
+                },
+                {
+                    "id": 600,
+                    "className": "三年级一班",
+                    "levelName": null,
+                    "studentCount": null,
+                    "grade": 3,
+                    "teacherName": null,
+                    "levelId": null
+                },
+                {
+                    "id": 601,
+                    "className": "二年级一班",
+                    "levelName": null,
+                    "studentCount": null,
+                    "grade": 2,
+                    "teacherName": null,
+                    "levelId": null
+                },
+                {
+                    "id": 602,
+                    "className": "一年级三班",
+                    "levelName": null,
+                    "studentCount": null,
+                    "grade": 1,
+                    "teacherName": null,
+                    "levelId": null
+                }
+            ]
+        }
+        var getData = function () {
+            this.init();
+        }
+        getData.prototype.init = function () {
+            console.log(this.currentData);
+//            new dropDownSelection(".testdropdown", data, this, this.getDate);
+            $("#testdropdown").dropDownSelection({
+                data:data,
+                listener:this,
+                listenFun:this.getDate,
+                showName: "className"
+            })
+        };
+        getData.prototype.getDate = function (data) {
+            this.currentData = data;
+            this.useData();
+        }
+        getData.prototype.useData = function () {
+            console.log(this.currentData)
+        }
+        new getData();
+    })
+</script>
+</body>
+</html>

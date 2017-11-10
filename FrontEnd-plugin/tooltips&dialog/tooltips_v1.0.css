@@ -1,0 +1,123 @@
+/*Tips start*/
+.tips_content {
+    margin: 0;
+    padding: 0;
+    z-index: 99;
+}
+
+.tips_cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(200, 200, 200, 0.2);
+}
+
+.tips_con {
+    width: 360px;
+    min-height: 130px;
+    position: absolute;
+    top: 35%;
+    left: 40%;
+    background-color: #fafafa;
+    box-shadow: 1px 1px 4px 0px #e2e2e2;
+}
+
+.tips_con .tips_title {
+    border-bottom: 1px solid #419bf9;
+    text-align: center;
+    background-color: #419bf9;
+    color: #ffffff;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.tips_con .tips_title .tips_title_close {
+    position: absolute;
+    width: 20px;
+    height: 40px;
+    line-height: 40px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.tips_con .tips_body .tips_info {
+    text-align: left;
+    font-size: 16px;
+    margin-top: 29px;
+    padding: 0 10px;
+}
+
+.tips_con .tips_body .tips_button {
+    position: relative;
+    text-align: center;
+    font-size: 16px;
+    margin: 29px 0 38px 0;
+    padding: 0 10px;
+}
+
+.tips_con .tips_body .tips_button span {
+    background-color: #419bf9;
+    color: #ffffff;
+    padding: 8px 15px;
+    cursor: pointer;
+    margin: 0 20px;
+    border-radius: 5px;
+}
+
+.tips_con .tips_body .tips_button span:last-child {
+    background-color: #CCCCCC;
+    color: #000;
+}
+
+.tips_content .tips_info{
+    text-align: center;
+}
+.tips_content .tips_info_text{
+    position: absolute;
+    top: 45%;
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+.tips_content .tips_info .succ{
+    background-color: #419bf9;
+    color: #ffffff;
+}
+.tips_content .tips_info .fail{
+    background-color: #ff4e4e;
+    color: #ffffff;
+}
+/*Tips end*/
+/*Loading start*/
+.loading_content{
+    margin: 0;
+    padding: 0;
+    z-index: 99;
+}
+.loading_cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(200, 200, 200, 0.2);
+}
+
+.loading_info {
+    position: absolute;
+    text-align: center;
+    width: 200px;
+    min-height: 100px;
+    top: 35%;
+    left: 43%;
+}
+.loading_info img{
+    width: 80px;
+    height: 80px;
+}
+/*Loading end*/

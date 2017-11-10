@@ -1,0 +1,14 @@
+jQuery官方插件贵方
+;(function ($) {
+    var defaults = {
+        //    各种参数
+    }
+    $.fn.plugin = function (options) {
+        var option = $.extend(defaults, options);
+
+        return this.each(function () {
+            //    实现功能的代码
+            var _this = this;
+        });
+    }
+})(jQuery);
