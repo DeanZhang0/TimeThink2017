@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>学生统计</title>
+    <link rel="stylesheet" href="./practice.css"/>
+    <script src="./js/jquery-3.1.1.js"></script>
+    <script src="./js/echarts.simple.min.js"></script>
+    <script src="./js/practice.js"></script>
+</head>
+<body>
+<div class="analysis">
+    <div data-analy="analysis-top" class="con analysis-top">
+        <ul>
+            <li class="top-left">
+                <span data-analy="work-status"></span>（参与人数：<span data-analy="analy-member"
+                                                                  class="analy-member">0人</span>&nbsp;平均分数：<span
+                    data-analy="ave-point" class="ave-point">0分</span>）
+            </li>
+            <li class="top-right">
+                <span data-analy="analy-fresh" class="analy-fresh">刷新</span>
+                <span data-analy="ending-exam" class="ending-exam">停止答题</span>
+            </li>
+        </ul>
+    </div>
+    <div data-analy="analysis-middle" class="con analysis-middle">
+        <p class="middle-title">练习结果分布示意图</p>
+
+        <div>
+            <div id="analy-mid-left" data-analy="analy-mid-left" class="analy-mid-left fl"></div>
+            <div class="analy-mid-right fr">
+                <p><span class="score_A">优秀</span><span>得分为总分90%～100%</span></p>
+
+                <p><span class="score_B">良好</span><span>得分为总分80%～89%</span></p>
+
+                <p><span class="score_C">一般</span><span>得分为总分70%～79%</span></p>
+
+                <p><span class="score_D">及格</span><span>得分为总分60%～69%</span></p>
+
+                <p><span class="score_E">不及格</span><span>得分为总分0%～59%</span></p>
+            </div>
+        </div>
+    </div>
+    <div data-analy="analysis-bottom" class="con analysis-bottom">
+        <div data-analy="analy-b-left" class="analy-b-left fl">
+            <ul>
+                <li class="analy-b-seq">题号</li>
+                <li class="analy-b-subject">题型</li>
+                <li class="analy-b-correct">正确答案</li>
+                <li class="analy-b-ratio">正确率</li>
+            </ul>
+            <div class="analy-show">
+            </div>
+        </div>
+        <div data-analy="analy-b-right" class="analy-b-right fr">
+            <ul>
+                <li class="analy-b-seq">题号</li>
+                <li class="analy-b-subject">题型</li>
+                <li class="analy-b-correct">正确答案</li>
+                <li class="analy-b-ratio">正确率</li>
+            </ul>
+            <div class="analy-show">
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var TestData = {
+        workStatus: 0,
+        totalMember: 100,
+        averageScore: 60,
+        scopeScore: {
+            rateA: 10,
+            rateB: 20,
+            rateC: 30,
+            rateD: 30,
+            rateE: 10,
+        },
+        correcRatio: [
+            {
+                num: 1,
+                type: "single",
+                correctAnswer: [0],
+                ratio: 10
+            },
+            {
+                num: 2,
+                type: "single",
+                correctAnswer: [1],
+                ratio: 20
+            },
+            {
+                num: 3,
+                type: "multi",
+                correctAnswer: [2],
+                ratio: 30
+            },
+            {
+                num: 4,
+                type: "multi",
+                correctAnswer: [1, 2],
+                ratio: 40
+            },
+            {
+                num: 5,
+                type: "multi",
+                correctAnswer: [2, 3, 4],
+                ratio: 50
+            },
+            {
+                num: 6,
+                type: "judge",
+                correctAnswer: [2],
+                ratio: 70
+            },
+        ]
+    }
+
+    $(function () {
+        var AnalysisiPageFun = new createAnalysisPage(".analysis");
+        function getAnalysisData(data) {
+            AnalysisiPageFun.data = TestData;
+            AnalysisiPageFun.buildTopFun();
+            AnalysisiPageFun.buildMiddleFun();
+            AnalysisiPageFun.buildBottomFun();
+        }
+        getAnalysisData();
+    })
+</script>
+</body>
+</html>

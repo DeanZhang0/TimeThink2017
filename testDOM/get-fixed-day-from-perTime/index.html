@@ -1,0 +1,180 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery-3.1.1.js"></script>
+</head>
+<body>
+<!--<div class="getDay"><a href="#">获取2017-10-02到2017-10-23该段时间内的所有以天为单位的日期</a></div>-->
+<div class="getWeek"><a href="#">获取2017-10-02到2017-10-23该段时间内的所有以周一为单位的日期</a></div>
+<!--<div class="month"><a href="#">获取2016-06-01到2017-09-01该段时间内的所有以月为单位的日期</a></div>-->
+<!--<div class="year"><a href="#">获取2003-01-01到2017-01-01该段时间内的所有以年为单位的日期</a></div>-->
+<div id="addBatchPoint-cover">
+    <div id="addBatchPoint">
+        <div class="batchTitle">批量创建课次</div>
+        <div class="batchCon">
+            <ul class="batchDate">
+                <li class="starDate">开始日期：<input type="text" class="batchinput" value="" id="batchStartDate"
+                                                 onclick="layui.laydate({elem: this, istime: false,format: 'YYYY-MM-DD'})">
+                </li>
+                <li class="starDate">结束日期：<input type="text" class="batchinput" value="" id="batchEndDate"
+                                                 onclick="layui.laydate({elem: this, istime: false,format: 'YYYY-MM-DD'})">
+                </li>
+            </ul>
+            <ul class="batchDay"><input type="checkbox" value="1">周一 <input type="checkbox" value="2">周二 <input
+                    type="checkbox" value="3">周三 <input type="checkbox" value="4">周四 <input type="checkbox" value="5">周五
+                <input type="checkbox" value="6">周六 <input type="checkbox" value="0">周日
+            </ul>
+            <ul class="batchTime">
+                <li class="starTime">开始时间：<input type="text" class="batchinput" value="" id="btachStartTime"
+                                                 onclick="layui.laydate({elem: this, istime: true, min: '2000-01-01 12:00:00', format: 'YYYY-MM-DD hh:mm:ss'})">
+                </li>
+                <li class="starTime">结束时间：<input type="text" class="batchinput" value="" id="batchEndTime"
+                                                 onclick="layui.laydate({elem: this, istime: true, min: '2000-01-01 12:00:00', format: 'YYYY-MM-DD hh:mm:ss'})">
+                </li>
+            </ul>
+            <ul class="batchTeach">
+                <div>主讲教师： <input type="hidden" name="courseKpoint.teacherId" inputname="teacherListteacherIdArr"
+                                  value="<c:if test='${not empty sysUser}'>${sysUser.bindingRole}</c:if>"> <a
+                        href="javascript:void(0)" onclick="selectTeacher('radio','batchTeachID')"
+                        class="chooseTeach">选择</a>
+
+                    <div id="batchTeachID" class="batchTeachID" style="display: none"></div>
+                </div>
+            </ul>
+        </div>
+        <div class="batchBtn">
+            <ul>
+                <li class="batchConfirm" onclick="addBatchKpoint(${courseId});">确定</li>
+                <li class="batchCancel" onclick="removeBatchKpoint()">取消</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+
+    $(document).ready(function () {
+        $(".month").click(function () {
+            alert(getMonthAll("2016-06-01", "2017-09-01"));
+        })
+        $(".year").click(function () {
+            alert(getYearAll("2003-01-0", "2017-01-01"));
+        })
+
+        $(".getDay").click(function () {
+            console.log(getDayAll("2017-10-02", "2017-10-23"));
+        })
+        $(".getWeek").click(function () {
+            var startTime = "10:00:00";
+            var endTime = "14:12:25";
+            var selectday = [0, 1, 2, 3, 4, 5, 6]
+            var allDays = getDayAll("2017-10-02", "2017-10-23", selectday);
+            console.log(allDays[0] + " " + endTime);
+//            alert(getWeekAll("2017-10-02","2017-10-23"));
+        })
+    })
+
+    Date.prototype.format = function () {
+        var s = '';
+        s += this.getFullYear() + '-';          // 获取年份。
+        s += (this.getMonth() + 1) + "-";         // 获取月份。
+        s += this.getDate();                 // 获取日。
+        return (s);                          // 返回日期。
+    };
+
+    //按日查询
+    function getDayAll(begin, end, selectday) {
+        var selectDay = selectday;
+        var selectDate = [];
+
+        var dateAllArr = new Array();
+        var ab = begin.split("-");
+        var ae = end.split("-");
+        var db = new Date();
+        db.setUTCFullYear(ab[0], ab[1] - 1, ab[2]);
+        var de = new Date();
+        de.setUTCFullYear(ae[0], ae[1] - 1, ae[2]);
+        var unixDb = db.getTime();
+        var unixDe = de.getTime();
+        for (var k = unixDb; k <= unixDe;) {
+            dateAllArr.push({
+                date: (new Date(parseInt(k))).format().toString(),
+                week: (new Date(parseInt(k))).getDay()
+            });
+            k = k + 24 * 60 * 60 * 1000;
+        }
+
+
+        for (var i = 0; i < dateAllArr.length; i++) {
+            if ($.inArray(dateAllArr[i].week, selectDay) !== -1) {
+                selectDate.push(dateAllArr[i].date);
+            }
+        }
+        return selectDate;
+    }
+
+    //按周查询
+    function getWeekAll(begin, end) {
+        var dateAllArr = new Array();
+        var ab = begin.split("-");
+        var ae = end.split("-");
+        var db = new Date();
+        db.setUTCFullYear(ab[0], ab[1] - 1, ab[2]);
+        var de = new Date();
+        de.setUTCFullYear(ae[0], ae[1] - 1, ae[2]);
+        var unixDb = db.getTime();
+        var unixDe = de.getTime();
+        for (var k = unixDb; k <= unixDe;) {
+            dateAllArr.push((new Date(parseInt(k))).format().toString());
+            k = k + 7 * 24 * 60 * 60 * 1000;
+        }
+        return dateAllArr;
+    }
+
+
+    function getMonthAll(begin, end) {
+        var d1 = begin;
+        var d2 = end;
+        var dateArry = new Array();
+        var s1 = d1.split("-");
+        var s2 = d2.split("-");
+        var mCount = 0;
+        if (parseInt(s1[0]) < parseInt(s2[0])) {
+            mCount = (parseInt(s2[0]) - parseInt(s1[0])) * 12 + parseInt(s2[1]) - parseInt(s1[1]) + 1;
+        } else {
+            mCount = parseInt(s2[1]) - parseInt(s1[1]) + 1;
+        }
+        if (mCount > 0) {
+            var startM = parseInt(s1[1]);
+            var startY = parseInt(s1[0]);
+            for (var i = 0; i < mCount; i++) {
+                if (startM < 12) {
+                    dateArry[i] = startY + "-" + (startM > 9 ? startM : "0" + startM);
+                    startM += 1;
+                } else {
+                    dateArry[i] = startY + "-" + (startM > 9 ? startM : "0" + startM);
+                    startM = 1;
+                    startY += 1;
+                }
+            }
+        }
+        return dateArry;
+    }
+
+    function getYearAll(begin, end) {
+        var d1 = begin;
+        var d2 = end;
+        var dateArry = new Array();
+        var s1 = d1.split("-");
+        var s2 = d2.split("-");
+        var mYearCount = parseInt(s2[0]) - parseInt(s1[0]) + 1;
+        var startY = parseInt(s1[0]);
+        for (var i = 0; i < mYearCount; i++) {
+            dateArry[i] = startY;
+            startY += 1;
+        }
+        return dateArry;
+    }
+</script>
+</html>

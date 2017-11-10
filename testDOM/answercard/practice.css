@@ -1,0 +1,376 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, select, form, fieldset, input, p, blockquote, table, th, td, embed, object {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑",tahoma,arial;
+}
+/*创建答题卡开始*/
+.card{
+    width: 900px;
+    position: relative;
+    margin: 50px auto;
+    border: 1px solid #afafaf;
+}
+.card .con{
+    width: 850px;
+    position: relative;
+    margin: 20px auto;
+}
+.card ul li{
+    display: inline-block;
+}
+.card input {
+    width: 20px;
+    text-align: center;
+    maxlength:2;
+}
+.card .cardtitle{
+    text-align: center;
+    font-size: 16px;
+    color: #4A4A4A;
+}
+.card .cardtitle ul li{
+    margin: 0 10px;
+}
+.card .cardtitle .spec-font{
+    font-size: 24px;
+    color: #DE8E55;
+}
+.card .cardcontrol{
+    padding: 15px 0;
+    background-color: #F4F4F4;
+    text-align: left;
+    font-size: 14px;
+    box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.12);
+    border-radius: 2px;
+}
+.card .cardcontrol ul{
+    padding: 0 0 0 20px;
+}
+.card .cardcontrol ul li{
+    width: 18%;
+}
+.card .cardcontrol .c-add{
+    width: 22%;
+    text-align: right;
+}
+.card .cardcontrol .c-add span{
+    position: relative;
+    background-color: #325C81;
+    border-radius: 2px;
+    padding: 5px 20px;
+    font-size: 14px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+.card .cardcontrol .c-add span:active{
+    background-color: #16334C;
+}
+.card .cardcontrol .c-add img{
+    vertical-align: middle;
+}
+.card .cardshow{
+    background-color: #F4F4F4;
+    text-align: left;
+    font-size: 14px;
+    box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.12);
+    border-radius: 2px;
+}
+.card .cardshow .cs-title{
+    background-color: #EAEAEA;
+    font-size: 14px;
+}
+.card .cardshow li{
+    text-align: center;
+}
+.card .cardshow .cs-title ul li{
+    padding: 15px 0;
+    border-right:1px solid #d2d2d2;
+}
+.card .cardshow .cs-con ul li{
+    padding: 10px 0;
+}
+.card .cardshow .cs-con ul:nth-child(odd){
+    background-color: #F9F9F9;
+}
+.card .cardshow .cs-con ul:nth-child(even){
+    background-color: #EAEAEA;
+}
+.card .cardshow .cs-t-seq{
+    width: 10%;
+}
+.card .cardshow .cs-t-type{
+    width: 12%;
+}
+.card .cardshow .cs-t-num{
+    width: 12%;
+}
+.card .cardshow .cs-t-answer{
+    width: 38%;
+}
+.card .cardshow .cs-t-fraction{
+    width: 10%;
+}
+
+.card .cardshow .cs-t-del{
+    width: 12%;
+}
+.card .cardshow .cs-t-del span{
+    cursor: pointer;
+}
+.card .cardshow .cs-title .cs-t-del{
+    border-right: none;
+}
+.card .cardshow .cs-con{
+    height: 360px;
+    overflow-y: auto;
+}
+/*单选样式*/
+.card .cs-con .single .cs-t-answer{
+    text-align: left;
+}
+.card .cs-con .single .cs-t-answer span{
+    padding: 4px 8px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background-color: #BDC5CD;
+    color: #FFF;
+    cursor: pointer;
+}
+.card .cs-con .single .cs-t-answer span:first-child{
+    margin-left: 15px;
+}
+.card .cs-con .single .cs-t-answer span.active{
+    background-color: #325C81;
+}
+/*多选样式*/
+.card .cs-con .multi .cs-t-answer{
+    text-align: left;
+}
+.card .cs-con .multi .cs-t-answer span{
+    padding: 4px 8px;
+    margin: 0 5px;
+    background-color: #BDC5CD;
+    color: #FFF;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.card .cs-con .multi .cs-t-answer span:first-child{
+    margin-left: 15px;
+}
+.card .cs-con .multi .cs-t-answer span.active{
+    background-color: #325C81;
+}
+/*判断样式*/
+.card .cs-con .judge .cs-t-answer{
+    text-align: left;
+}
+.card .cs-con .judge .cs-t-answer span{
+    padding: 4px 8px;
+    margin: 0 5px;
+    background-color: #BDC5CD;
+    color: #FFF;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.card .cs-con .judge .cs-t-answer span:first-child{
+    margin-left: 15px;
+}
+.card .cs-con .judge .cs-t-answer span.active{
+    background-color: #325C81;
+}
+
+.card .release-card{
+    margin: 20px;
+    text-align: right;
+}
+.card .release-card span{
+    border-radius: 2px;
+    padding: 8px 30px;
+    background: #325C81;
+    color: #FFFFFF;
+    font-size: 14px;
+    cursor: pointer;
+}
+.card .release-card span:active{
+    background: #092238;
+}
+/*创建答题卡结束*/
+/*分析页面开始*/
+.analysis{
+    width: 900px;
+    position: relative;
+    margin: 50px auto;
+    border: 1px solid #afafaf;
+}
+.analysis .fl{
+    float: left;
+}
+.analysis .fr{
+    float: right;
+}
+.analysis .con{
+    width: 850px;
+    position: relative;
+    margin: 20px auto;
+    background-color: #F4F4F4;
+    box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.12);
+    border-radius: 2px;
+    font-size: 14px;
+}
+.analysis ul li{
+    display: inline-block;
+}
+.analysis .analysis-top{
+    padding: 15px 0;
+    text-align: left;
+}
+.analysis .analysis-top .top-left{
+    padding-left: 30px;
+}
+.analysis .analysis-top .top-left .analy-member, .analysis-top .top-left .ave-point{
+    color: #DE8E55;
+}
+.analysis .analysis-top .top-right{
+    position: absolute;
+    top: 10px;
+    right: 30px;
+}
+.analysis .analysis-top .top-right span{
+    width: 90px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    display: inline-block;
+    background-color: #325C81;
+    border-radius: 2px;
+    margin-left: 10px;
+    color: #FFF;
+    cursor: pointer;
+}
+.analysis .analysis-top .top-right span.ending-exam{
+    background-color: #C5C5C5;
+}
+.analysis .analysis-top .top-right span:active{
+    opacity: .9;
+}
+.analysis .analysis-middle{
+    height: 250px;
+    text-align: center;
+}
+.analysis .analysis-middle .middle-title{
+    padding: 10px 0 10px 0;
+    font-size: 16px;
+    color: #DE8E55;
+}
+.analysis .analysis-middle .analy-mid-left{
+    width: 50%;
+    height: 200px;
+}
+.analysis .analysis-middle .analy-mid-right{
+    width: 50%;
+    height: 200px;
+    padding: 5px 0 0 0;
+}
+.analysis .analysis-middle .analy-mid-right p{
+    padding: 10px 0 10px 0;
+    font-size: 13px;
+    color: #9B9B9B;
+    text-align: left;
+}
+.analysis .analysis-middle .analy-mid-right p span{
+    margin-left: 10px;
+}
+.analysis .analysis-middle .analy-mid-right p .score_A{
+    padding: 5px 20px;
+    border-radius: 2px;
+    background: #4A9074;
+    color: #FBFBFB;
+}
+.analysis .analysis-middle .analy-mid-right p .score_B{
+    padding: 5px 20px;
+    border-radius: 2px;
+    background: #3F719F;
+    color: #FBFBFB;
+}
+.analysis .analysis-middle .analy-mid-right p .score_C{
+    padding: 5px 20px;
+    border-radius: 2px;
+    background: #CE9E3D;
+    color: #FBFBFB;
+}
+.analysis .analysis-middle .analy-mid-right p .score_D{
+    padding: 5px 20px;
+    border-radius: 2px;
+    background: #B86A47;
+    color: #FBFBFB;
+}
+.analysis .analysis-middle .analy-mid-right p .score_E{
+    padding: 5px 14px;
+    border-radius: 2px;
+    background: #B64E4E;
+    color: #FBFBFB;
+}
+.analysis .analysis-bottom{
+    height: 233px;
+    text-align: center;
+}
+.analysis .analysis-bottom ul{
+    background-color: #EAEAEA;
+}
+.analysis .analysis-bottom .analy-b-left{
+    width: 424px;
+    height: 233px;
+    border-right: 1px solid #CCCCCC;
+}
+.analysis .analysis-bottom .analy-b-right{
+    width: 425px;
+    height: 233px;
+}
+.analysis .analysis-bottom li{
+    padding: 10px 0;
+}
+.analysis .analysis-bottom .analy-b-seq{
+    width: 10%;
+    border-right: 1px solid #CCCCCC;
+}
+.analysis .analysis-bottom .analy-b-subject{
+    width: 20%;
+    border-right: 1px solid #CCCCCC;
+}
+.analysis .analysis-bottom .analy-b-correct{
+    width: 20%;
+    border-right: 1px solid #CCCCCC;
+}
+.analysis .analysis-bottom .analy-b-ratio{
+    width: 40%;
+}
+.analysis .analysis-bottom .analy-show{
+    height: 195px;
+    overflow-y: auto;
+}
+.analysis .analysis-bottom .analy-show .total-correct-ratio{
+    width: 100%;
+    height: 15px;
+    background-color: #d7d7d7;
+    border-radius: 2px;
+    margin-left: 5px;
+}
+.analysis .analysis-bottom .analy-show .correct-ratio{
+    height: 100%;
+    background-color: #6084A3;
+    border-radius: 2px;
+    text-align: center;
+    color: #FFF;
+    font-size: 10px;
+}
+.analysis .analysis-bottom .analy-b-left .analy-show ul:nth-child(odd){
+    background-color: #F9F9F9;
+}
+.analysis .analysis-bottom .analy-b-right .analy-show ul:nth-child(odd){
+    background-color: #F9F9F9;
+}
+.analysis .analysis-bottom .analy-show ul li{
+    border-right: none;
+}
+/*分析页面结束*/
