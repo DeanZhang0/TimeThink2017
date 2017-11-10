@@ -1,0 +1,88 @@
+ul {
+    list-style-type: none;
+}
+.c-tree-content {
+    display: inline-block;
+    margin: 5px;
+    color: #5a5a5a;
+    font-size: 0;
+    background: #fff;
+    overflow: hidden;
+    min-width: 230px;
+    min-height: 400px;
+}
+.c-tree-content li {
+    position: relative;
+    white-space: nowrap;
+}
+.c-tree-content .c-tree-switch {
+    display: inline-block;
+    width: 22px;
+    height: 29px;
+    vertical-align: top;
+    background-position: center;
+    background-size: 15px 15px;
+    background-repeat: no-repeat;
+    background-image: url('../img/zhankai_icon.png');
+    cursor: pointer;
+}
+.c-tree-content .c-tree-switch-close {
+    background-image: url('../img/shouqi_icon.png');
+}
+.c-tree-content .c-tree-check-box {
+    display: inline-block;
+    width: 22px;
+    height: 30px;
+    vertical-align: top;
+    background-position: center;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-image: url('../img/checkbox_off.png');
+    cursor: pointer;
+}
+.c-tree-content .c-tree-check-box-on {
+    background-image: url('../img/checkbox_on.png');
+}
+.c-tree-content .c-tree-text {
+    display: inline-block;
+    margin-left: 5px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 13px;
+}
+.c-tree-content ul {
+    position: relative;
+    padding-left: 25px;
+    background-image: url('../img/xuxian_s.png');
+    background-position: 11px 8px;
+    background-repeat: repeat-y;
+}
+.c-tree-content ul:before {
+    content: "";
+    position: absolute;
+    left: 11px;
+    bottom: 0;
+    width: 2px;
+    height: 15px;
+    background: #fff;
+}
+.c-tree-content li:before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 14px;
+    width: 10px;
+    height: 2px;
+    background-image: url('../img/xuxian_h.png');
+    background-position: -10px;
+    background-repeat: repeat-x;
+}
+.c-tree-last-child:after {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 16px;
+    width: 20px;
+    height: 100%;
+    background: #fff;
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>两种横向滚动的方法</title>
+    <script src="../jquery-3.1.1.js"></script>
+</head>
+<body>
+<div id="s" style="width:100%; position:relative; white-space:nowrap; overflow:hidden; height:20px;">
+    <div id="noticeList" style="position:absolute; top:0; height:20px;">
+        <span>jQuery文字横向滚动jQuery文字横向滚动jQuery文字横向滚动jQuery文字横向滚动jQuery文字横向滚动jQuery文字横向滚动jQuery文字横向滚动</span>
+    </div>
+</div>
+<script>
+    $(function () {
+//        第一种
+//        $.fn.textScroll=function(){
+//
+//            var p = $(this),
+//
+//                    c = p.children(),
+//
+//                    speed=1000;// 值越大，速度越小
+//
+//            var cw = c.width(),pw=p.width();
+//
+//            var t = (cw / 100) * speed;
+//
+//            var f = null, t1 = 0;
+//
+//            function ani(tm) {
+//
+//                counttime();
+//
+//                c.animate({ left: -cw }, tm, "linear", function () {
+//
+//                    c.css({ left: pw });
+//
+//                    clearInterval(f);
+//
+//                    t1 = 0;
+//
+//                    t=((cw+pw)/100)*speed;
+//
+//                    ani(t);
+//
+//                });
+//
+//            }
+//
+//            function counttime() {
+//
+//                f = setInterval(function () {
+//
+//                    t1 += 10;
+//
+//                }, 10);
+//
+//            }
+//
+//            p.on({
+//
+//                mouseenter: function () {
+//
+//                    c.stop(false, false);
+//
+//                    clearInterval(f);
+//
+//                    console.log(t1);
+//
+//                },
+//
+//                mouseleave: function () {
+//
+//                    ani(t - t1);
+//
+//                    console.log(t1);
+//
+//                }
+//
+//            });
+//
+//            ani(t);
+//
+//        }
+//        第二种
+        $.fn.textScroll = function () {
+
+            var speed = 100, flag = null, tt, that = $(this), child = that.children();
+
+            var p_w = that.width(), w = child.width();
+
+            child.css({left: p_w});
+
+            var t = (w + p_w) / speed * 1000;
+
+            function play(m) {
+
+                var tm = m == undefined ? t : m;
+
+                child.animate({left: -w}, tm, "linear", function () {
+
+                    $(this).css("left", p_w);
+
+                    play();
+
+                });
+
+            }
+
+            child.on({
+
+                mouseenter: function () {
+
+                    var l = $(this).position().left;
+
+                    $(this).stop();
+
+                    tt = (-(-w - l) / speed) * 1000;
+
+                },
+
+                mouseleave: function () {
+
+                    play(tt);
+
+                    tt = undefined;
+
+                }
+
+            });
+
+            play();
+
+        }
+
+        $("#s").textScroll();
+    })
+</script>
+</body>
+</html>
